@@ -11,6 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.8",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.5",
     "react": "^19.1.0",
