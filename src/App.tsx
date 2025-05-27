@@ -1,40 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
-// Import PrimeReact Button component
-import { Button } from 'primereact/button'
+import Main from './pages/Main'
+import About from './pages/About'
+import { Menubar } from 'primereact/menubar'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const menuItems = [
+    {
+      label: 'Main',
+      icon: 'pi pi-home',
+      command: () => {
+        window.location.href = '/'
+      }
+    },
+    {
+      label: 'About',
+      icon: 'pi pi-info-circle',
+      command: () => {
+        window.location.href = '/about'
+      }
+    }
+  ]
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        {/* Regular button */}
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        {/* PrimeReact Button */}
-        <div style={{ marginTop: '20px' }}>
-          <Button label="PrimeReact Button" icon="pi pi-check" />
-        </div>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Menubar model={menuItems} className="mb-4" />
+      
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </>
   )
 }
