@@ -2,6 +2,7 @@ import './App.css'
 import { Menubar } from 'primereact/menubar'
 import { AppRoutes } from './routes'
 import { useNavigate } from 'react-router-dom'
+import { AuthButtons } from './components/auth/AuthButtons'
 
 function App() {
   const navigate = useNavigate()
@@ -23,9 +24,11 @@ function App() {
     }
   ]
 
+  const end = <AuthButtons />
+
   return (
     <>
-      <Menubar model={menuItems} className="mb-4" />
+      <Menubar model={menuItems} end={end} className="mb-4" />
       
       <AppRoutes />
     </>
