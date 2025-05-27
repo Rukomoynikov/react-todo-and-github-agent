@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      dockerfile_inline: |
+        FROM node:latest
+        WORKDIR /app
+        COPY package*.json ./
+        RUN npm install
+    command:  npm run dev
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
