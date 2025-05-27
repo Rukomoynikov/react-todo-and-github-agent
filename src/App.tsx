@@ -1,8 +1,6 @@
-import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import Main from './pages/Main'
-import About from './pages/About'
 import { Menubar } from 'primereact/menubar'
+import { AppRoutes } from './routes'
 
 function App() {
   const menuItems = [
@@ -26,10 +24,7 @@ function App() {
     <>
       <Menubar model={menuItems} className="mb-4" />
       
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
+      <AppRoutes />
     </>
   )
 }
