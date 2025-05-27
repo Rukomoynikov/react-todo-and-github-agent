@@ -1,11 +1,7 @@
 services:
   app:
     build:
-      dockerfile_inline: |
-        FROM node:latest
-        WORKDIR /app
-        COPY package*.json ./
-        RUN npm install
+      dockerfile: Dockerfile-dev
     command:  npm run dev
     volumes:
       - .:/app
