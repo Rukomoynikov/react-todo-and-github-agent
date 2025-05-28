@@ -3,9 +3,11 @@ import { Menubar } from 'primereact/menubar'
 import { AppRoutes } from './routes'
 import { useNavigate } from 'react-router-dom'
 import { AuthButtons } from './components/auth/AuthButtons'
+import { useAuth } from './hooks/useAuth'
 
 function App() {
   const navigate = useNavigate()
+  const { user } = useAuth()
   
   const menuItems = [
     {
@@ -23,6 +25,17 @@ function App() {
       }
     }
   ]
+
+  // Add todo lists menu item only for authenticated users
+  if (user) {
+    menuItems.push({
+      label: 'Todo Lists',
+      icon: 'pi pi-list',
+      command: () => {
+        navigate('/todo-lists')
+      }
+    })
+  }
 
   const end = <AuthButtons />
 
